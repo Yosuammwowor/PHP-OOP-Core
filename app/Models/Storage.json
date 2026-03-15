@@ -1,1 +1,4 @@
-[]
+[
+    {"name": "Proyektor", "price": 1200000, "status": "Tersedia"},
+    {"name": "Mic v1", "price": 100000, "status": "Dipinjam"}
+]

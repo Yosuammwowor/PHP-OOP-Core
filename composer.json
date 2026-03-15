@@ -3,7 +3,7 @@
     "description": "Mini Project Minggu Ke 2 - OOP Lanjut",
     "autoload": {
         "psr-4": {
-            "App": "app/"
+            "App\\": "app/"
         }
     },
     "authors": [
