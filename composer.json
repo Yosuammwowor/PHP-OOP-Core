@@ -1,0 +1,16 @@
+{
+    "name": "yosua/mini-project",
+    "description": "Mini Project Minggu Ke 2 - OOP Lanjut",
+    "autoload": {
+        "psr-4": {
+            "App": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yosua",
+            "email": "yosuammwowor@gmail.com"
+        }
+    ],
+    "require": {}
+}
