@@ -17,7 +17,7 @@ class RentalController
         $this->service = $service;
     }
 
-    public function getUser()
+    public function getTools()
     {
         $rawData = $this->equip->getAllEquipment();
         foreach ($rawData as $data) {
