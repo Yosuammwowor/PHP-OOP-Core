@@ -5,7 +5,7 @@ namespace App\Models;
 class Equipment
 {
     private static $db;
-    private $name, $price, $status;
+    // private $name, $price, $status;
 
     function __construct()
     {
