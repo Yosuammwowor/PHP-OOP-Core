@@ -19,10 +19,10 @@ class RentalController
 
     public function getTools()
     {
-        $rawData = $this->equip->getAllEquipment();
-        foreach ($rawData as $data) {
-            echo "{$data["name"]} - Price: {$data["price"]}\n";
-        }
+        $data = $this->equip;
+        $service = $this->service;
+        $service->ServiceGetTools($data);
+        $service->logActivity("Log: Access to get all tools");
     }
 
     public function checkStatus($name)
@@ -31,5 +31,6 @@ class RentalController
         $service = $this->service;
 
         $service->ServiceCheckStatus($name, $data);
+        $service->logActivity("Log: Access to check tool status");
     }
 }

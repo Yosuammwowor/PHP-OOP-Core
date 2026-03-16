@@ -4,8 +4,20 @@ namespace App\Services;
 
 require __DIR__ . "/../../vendor/autoload.php";
 
+use App\Traits\LoggerTrait;
+
 class RentalService
 {
+    use LoggerTrait;
+
+    function ServiceGetTools($data)
+    {
+        $rawData = $data->getAllEquipment();
+        foreach ($rawData as $d) {
+            echo "{$d["name"]} - Price: {$d["price"]}\n";
+        }
+    }
+
     function ServiceCheckStatus($name, $data)
     {
         $target = str_replace(' ', '', strtolower($name));
