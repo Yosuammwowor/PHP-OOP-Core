@@ -14,7 +14,7 @@ class RentalService
     {
         $rawData = $data->getAllEquipment();
         foreach ($rawData as $d) {
-            echo "{$d["name"]} - Price: {$d["price"]}\n";
+            echo "{$d["name"]} - Price: " . PriceHelper::formatPrice($d["price"]) . "\n";
         }
     }
 
@@ -41,5 +41,14 @@ class RentalService
         if (!$status) {
             error_log("Error: Barang Tidak ditemukan!!!\n");
         }
+    }
+}
+
+class PriceHelper
+{
+    static function formatPrice($value)
+    {
+        $priceFormat = "IDR " . number_format($value, 0, ".", ".");
+        return $priceFormat;
     }
 }
