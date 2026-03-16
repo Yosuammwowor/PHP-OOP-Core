@@ -11,5 +11,5 @@ $service = new RentalService();
 
 $controller = new RentalController($equipment, $service);
 $controller->getTools();
-$controller->checkStatus("proyektors");
-$controller->rentTool("micv1");
+// $controller->checkStatus("proyektors");
+$controller->rentTool("canvapro");

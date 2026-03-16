@@ -13,8 +13,11 @@ class RentalService
     function ServiceGetTools($data)
     {
         $rawData = $data->getAllEquipment();
+        $count = 1;
         foreach ($rawData as $d) {
-            echo "{$d["name"]} - Price: " . PriceHelper::formatPrice($d["price"]) . "\n";
+            echo $count++ . ". {$d["name"]}\n";
+            echo "Tipe\t: " . $d["tipe"] . "\n";
+            echo "Price\t: " . PriceHelper::formatPrice($d["price"]) . "\n";
         }
     }
 
@@ -64,15 +67,17 @@ class RentalService
             $status = true;
             $d["status"] = "Dipinjam";
             array_push($tempData, $d);
+
+            $rentPrice = $d["tipe"] === "Hardware" ? $d["price"] * 0.25 : $d["price"] * 0.5;
+            echo "Rent Price : " . PriceHelper::formatPrice($rentPrice);
         }
 
         if (!$status) {
             die("Error: Barang Tidak ditemukan!!!\n");
         }
 
-        // print_r($tempData);
         $model->updateEquipments($tempData);
-        echo "Data successfully updated\n";
+        echo "\nData successfully updated\n";
     }
 }
 
