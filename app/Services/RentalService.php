@@ -22,7 +22,7 @@ class RentalService
     {
         $target = str_replace(' ', '', strtolower($name));
 
-        $status = false;
+        $status = null;
         foreach ($data as $d) {
 
             if (str_replace(' ', '', strtolower($d["name"])) !== $target) {
@@ -41,6 +41,38 @@ class RentalService
         if (!$status) {
             error_log("Error: Barang Tidak ditemukan!!!\n");
         }
+    }
+
+    function ServiceRentTool($name, $model)
+    {
+        $data = $model->getAllEquipment();
+        $target = str_replace(' ', '', strtolower($name));
+        $tempData = [];
+
+        $status = null;
+        foreach ($data as $d) {
+            if (str_replace(' ', '', strtolower($d["name"])) !== $target) {
+                array_push($tempData, $d);
+                continue;
+            }
+
+            if ($d["status"] === "Dipinjam") {
+                echo "Invalid, Barang sedang dipinjam\n";
+                return;
+            }
+
+            $status = true;
+            $d["status"] = "Dipinjam";
+            array_push($tempData, $d);
+        }
+
+        if (!$status) {
+            die("Error: Barang Tidak ditemukan!!!\n");
+        }
+
+        // print_r($tempData);
+        $model->updateEquipments($tempData);
+        echo "Data successfully updated\n";
     }
 }
 

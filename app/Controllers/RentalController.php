@@ -25,6 +25,15 @@ class RentalController
         $service->logActivity("Log: Access to get all tools");
     }
 
+    public function rentTool($name)
+    {
+        $data = $this->equip;
+        $service = $this->service;
+
+        $service->ServiceRentTool($name, $data);
+        $service->logActivity("Log: Access to check tool status");
+    }
+
     public function checkStatus($name)
     {
         $data = $this->equip->getAllEquipment();

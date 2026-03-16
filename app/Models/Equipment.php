@@ -33,6 +33,17 @@ class Equipment
         return [];
     }
 
+    public function updateEquipments($data)
+    {
+        rewind($this->db);
+
+        $data = json_encode($data);
+
+        fwrite($this->db, $data);
+    }
+
+    // public function rentTool($name) {}
+
     public function __destruct()
     {
         fclose($this->db);
