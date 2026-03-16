@@ -18,16 +18,16 @@ class RentalService
             }
 
             if ($d["status"] === "Dipinjam") {
-                echo "Status Barang : {$d["status"]}";
+                echo "Status Barang : {$d["status"]}\n";
                 return;
             }
 
             $status = true;
-            echo "Status Barang : {$d["status"]}";
+            echo "Status Barang : {$d["status"]}\n";
         }
 
         if (!$status) {
-            error_log("Error: Barang Tidak ditemukan!!!");
+            error_log("Error: Barang Tidak ditemukan!!!\n");
         }
     }
 }

@@ -4,15 +4,14 @@ namespace App\Models;
 
 class Equipment
 {
-    private static $db;
-    // private $name, $price, $status;
+    private $db;
 
-    function __construct()
+    public function __construct()
     {
         try {
-            self::$db = fopen(__DIR__ . "/Storage.json", "r+");
+            $this->db = fopen(__DIR__ . "/Storage.json", "r+");
 
-            if (!self::$db) {
+            if (!$this->db) {
                 throw new \Exception("Error: File Connection failed");
             }
         } catch (\Exception $e) {
@@ -20,12 +19,23 @@ class Equipment
         }
     }
 
-    function getAllEquipment()
+    public function getAllEquipment()
     {
-        $file = fread(self::$db, 1024);
+        rewind($this->db);
 
-        $res = json_decode($file, true);
+        $size = filesize(__DIR__ . "/Storage.json");
 
-        return $res;
+        if ($size > 0) {
+            $file = fread($this->db, $size);
+            return json_decode($file, true);
+        }
+
+        return [];
+    }
+
+    public function __destruct()
+    {
+        fclose($this->db);
+        echo "Database connection close";
     }
 }

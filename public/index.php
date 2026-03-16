@@ -10,5 +10,5 @@ $equipment = new Equipment();
 $service = new RentalService();
 
 $controller = new RentalController($equipment, $service);
-// $controller->getUser();
+$controller->getUser();
 $controller->checkStatus("micv1");
